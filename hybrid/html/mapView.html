@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Exam Center</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZpUMuf1p7A3lrPYFhIEm1bshrsKosErQ&callback=initMap&libraries=&v=weekly"
+      defer
+    ></script>
+    <style type="text/css">
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+
+      /* Optional: Makes the sample page fill the window. */
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <script>
+      "use strict";
+
+      let map;
+
+      function initMap() {
+        map = new google.maps.Map(document.getElementById("map"), {
+          center: {
+            lat: 43.7181557,
+            lng: -79.5181401,
+          },
+          zoom: 8
+        });
+		
+		const locationInfo = [{'title': 'NEWMARKET', 'desc': '<p>320 Harry Walker Parkway South, Newmarket, ON L3Y 7B4</p><p>Monday - Friday 7:00 AM-7:00PM</p><p>Saturday 8:30AM-5:00PM</p>', 'location': {'lat': 44.0565399, 'lng': -79.4210248}}, {'title': 'TORONTO PORT UNION', 'desc': '<p>91 Rylander Blvd. Unit # 109A, Scarborough, ON M1B 5M5</p><p>Monday - Friday 7:00 AM-7:00PM</p><p>Saturday 8:30AM-5:00PM</p>', 'location': {'lat': 43.7971562, 'lng': -79.15106109999999}}, {'title': 'TORONTO METRO-EAST', 'desc': '<p>1448 Lawrence Ave East Unit 15, North York, ON M4A 2V6</p><p>Monday - Friday 7:00AM-7:00PM</p><p>Saturday 8:30AM-5:00PM</p>', 'location': {'lat': 43.743243, 'lng': -79.31291759999999}}, {'title': 'TORONTO DOWNSVIEW (DOWNSVIEW PARK)', 'desc': '<p>37 Carl Hall Road, Toronto, ON M3K 2E2</p><p>Monday - Friday  7:00AM-7:00PM</p>', 'location': {'lat': 43.7463455, 'lng': -79.4790013}}, {'title': 'TORONTO DOWNTOWN', 'desc': '<p>777 Bay Street, Toronto, ON M5G 2C8 (Lower Level)</p><p>Monday - Friday 8:30 AM-5PM</p>', 'location': {'lat': 43.6604859, 'lng': -79.3844559}}, {'title': 'TORONTO ETOBICOKE', 'desc': '<p>5555 Eglinton Avenue West, Unit E120-124, Etobicoke, ON M9C 5M1</p><p>Monday - Friday 7:00AM-7:00PM</p><p>Saturday 8:30AM-5:00PM</p>', 'location': {'lat': 43.6503823, 'lng': -79.6035332}}, {'title': 'OSHAWA', 'desc': '<p>200 John Street West, Oshawa, ON L1J 2B4</p><p>Monday - Friday 8:30 AM-5PM</p>', 'location': {'lat': 43.8942217, 'lng': -78.8681665}}, {'title': 'HAMILTON', 'desc': '<p>370 Kenora Ave N,\u202f Stoney Creek, ON L8E 2W2</p><p>Monday to Friday\u202f 7:00 AM to 7:00 PM</p><p>Saturday 8:30AM-5:00PM</p>', 'location': {'lat': 43.24100199999999, 'lng': -79.7637756}}, {'title': 'OAKVILLE', 'desc': '<p>2370 Wyecroft Rd Oakville,L6L 5L7</p><p>Monday - Friday 7:00AM-7:00PM</p><p>Saturday 8:30AM-5:00PM</p>', 'location': {'lat': 43.4116146, 'lng': -79.73178949999999}}, {'title': 'ORANGEVILLE', 'desc': '<p>50 Fourth Ave Orangeville,L9W 4P1</p><p>Monday - Friday 7:00AM-7:00PM</p><p>Saturday 8:30AM-5:00PM</p>', 'location': {'lat': 43.9261502, 'lng': -80.0935966}}, {'title': 'MISSISSAUGA', 'desc': '<p>255 Longside Drive Mississauga,L5W 1L8</p><p>Monday - Friday 7:00AM-7:00PM</p><p>Saturday 8:30AM-5:00PM</p>', 'location': {'lat': 43.63888619999999, 'lng': -79.7093998}}, {'title': 'BRAMPTON', 'desc': '<p>59 First Gulf Blvd, Unit 9 Brampton, L6W 4P9</p><p>Monday - Friday 7:00AM-7:00PM</p><p>Saturday 8:30AM-5:00PM</p>', 'location': {'lat': 43.678215, 'lng': -79.7160616}}, {'title': 'OTTAWA WALKLEY', 'desc': '<p>1570 Walkley Rd,\u202f Ottawa, ON K1V 6P5</p><p>Monday to Friday\u202f 7:00 AM to 7:00 PM</p><p>Saturday 8:30AM-5:00PM</p>', 'location': {'lat': 45.376226, 'lng': -75.6475538}}, {'title': 'OTTAWA CANOTEK', 'desc': '<p>5303 Canotek Rd,\u202f Unit 14,\u202f Ottawa, ON K1J 9M1</p><p>Monday to Friday\u202f 8:30 AM to 5:00 PM</p>', 'location': {'lat': 45.4529502, 'lng': -75.5885048}}, {'title': 'KITCHENER', 'desc': '<p>1405 Ottawa St N,\u202f Unit 11,\u202f Kitchener, ON N2A 3Z1</p><p>Monday to Friday\u202f 7:00 AM to 7:00 PM</p><p>Saturday 8:30AM-5:00PM</p>', 'location': {'lat': 43.4560267, 'lng': -80.4299745}}, {'title': 'GUELPH', 'desc': '<p>255 Woodlawn Road W, Unit 106,\u202f Guelph, ON N1H 8J1</p><p>Monday to Friday\u202f 8:30 AM to 5:00 PM</p>', 'location': {'lat': 43.5532809, 'lng': -80.2953309}}]
+
+		for (var i in locationInfo){
+			
+			var p = locationInfo[i]['location']
+			var contentString =
+			          '<div id="content">' +
+			          '<div id="siteNotice">' +
+			          "</div>" +
+			          '<h3 id="firstHeading" class="firstHeading">'+locationInfo[i]['title']+'</h3>' +
+			          '<div id="bodyContent">' + locationInfo[i]['desc'] +
+			          "</div>" +
+			          "</div>";
+			
+			var marker = new google.maps.Marker({
+					position: p,
+					map,
+					title: locationInfo[i]['title']
+			});
+			var infowindow = new google.maps.InfoWindow();
+			google.maps.event.addListener(marker,'click', (function(marker,contentString,infowindow){ 
+			    return function() {
+			        infowindow.setContent(contentString);
+			        infowindow.open(map,marker);
+			    };
+			})(marker,contentString,infowindow)); 
+			
+		}
+		
+		
+      }
+	  
+	  
+	  
+    </script>
+  </head>
+  <body>
+    <div id="map"></div>
+  </body>
+</html>

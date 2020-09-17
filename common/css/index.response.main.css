@@ -1,0 +1,68 @@
+.hm-downloads-card {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  width: 750rpx;
+  height: 400.21rpx;
+  
+}
+
+.container {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 25rpx;
+  padding-right: 56.49rpx;
+  padding-left: 62.34rpx;
+  box-shadow: 0px 10px 30px rgba(209, 213, 223, 0.5);
+  
+  width: 720.78rpx;
+  height: 350.29rpx;
+  background-repeat: no-repeat;
+  background-attachment:fixed;
+  background-position:top;
+  
+  text-align: center;
+}
+
+.downloadDetail {
+  display: flex;
+  flex-direction: row;
+}
+
+.downloadDetail-container {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  height: 89.61rpx;
+}
+
+.count {
+  opacity: 1;
+  line-height: 60.75rpx;
+  white-space: nowrap;
+  color: white; text-shadow: black .1em 0.1em 0.2em;
+  font-family: Helvetica;
+  font-size: 100rpx;
+  font-weight: 600;
+  align-items: right;
+}
+
+.downloads {
+  opacity: 1;
+  margin-top: 50.95rpx;
+  line-height: 40.91rpx;
+  white-space: nowrap;
+  color: white; text-shadow: black 0.1em 0.1em 0.2em;
+  font-family: Helvetica;
+  font-size: 40.27rpx;
+  font-weight: 600;
+}
+
+.downloadImage {
+  width: 272.73rpx;
+  height: 97.4rpx;
+}
