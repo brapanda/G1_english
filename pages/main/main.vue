@@ -50,14 +50,6 @@ export default {
       type: String,
       default: 'hm-downloads-card'
     },
-    options: {
-      type: Object,
-      default: function() {
-        return {
-			
-        };
-      }
-    }
   },
   data() {
     return {
