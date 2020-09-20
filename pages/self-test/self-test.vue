@@ -73,10 +73,10 @@ import signQuestion from '@/static/data/question_sign_json.json'
 			_this.currentType = option.testType
 			
 			this.$eventHub.$on('resetAction', (data)=>{
-				console.log('collectChange', data);
 				if (data.currentType == this.currentType){
 					_this.resetQuestions()
 				}
+				return
 			})
 			
 			_this.setQuestions()
@@ -107,7 +107,6 @@ import signQuestion from '@/static/data/question_sign_json.json'
 			},
 			SwiperChange: function(e) { //滑动事件
 				var _this = this
-				console.log("swiperchange",e.target.current)
 				_this.$set(_this.subjectList[e.target.current],"showImg",true);
 				
 				let index = e.target.current;
@@ -192,9 +191,7 @@ import signQuestion from '@/static/data/question_sign_json.json'
 					let item = questionList[m]
 					result.push(item);
 				};
-				console.log("questions",result)
 				for (var n in result){
-					console.log("n in result", n, result[n].selected)
 					result[n].selected = -1
 					if (n == 0){
 						result[n].showImg = true
@@ -206,7 +203,6 @@ import signQuestion from '@/static/data/question_sign_json.json'
 			},
 			resetQuestions(){
 				var _this = this
-				console.log('remove current type',_this.currentType)
 				uni.removeStorageSync(_this.currentType)
 				_this.setQuestions()
 				// for (var i in this.subjectList){
@@ -214,7 +210,6 @@ import signQuestion from '@/static/data/question_sign_json.json'
 				// 	this.subjectList[i].isCorrect = null
 				// 	this.subjectList[i].selected = -1
 				// }
-				_this.AppointedSubject(0)
 			},
 			setQuestions(){
 				var _this = this
@@ -223,7 +218,6 @@ import signQuestion from '@/static/data/question_sign_json.json'
 				try {
 					const saveQuestions = uni.getStorageSync(_this.currentType)
 					if (saveQuestions.length > 0){
-						console.log('load history questions success', saveQuestions)
 						_this.subjectList = saveQuestions
 						_this.subjectIndex = 0
 					}else{
@@ -263,7 +257,6 @@ import signQuestion from '@/static/data/question_sign_json.json'
 				_this.countAnswers()
 			},
 			getAnswer(e){
-				console.log("getAnswer",e)
 				if(e.isCorrect){
 					let _this = this
 					setTimeout(function () {
@@ -310,7 +303,6 @@ import signQuestion from '@/static/data/question_sign_json.json'
 				return totalCorrect.toString()
 			},
 			checkSheet(info){
-				console.log('check info',info)
 				if (info.isSelected){
 					if (info.isCorrect){
 						return 'correct'
@@ -327,7 +319,6 @@ import signQuestion from '@/static/data/question_sign_json.json'
 				this.show_hide = !this.show_hide
 			},
 			showFixed(){
-				console.log("show fixed work",this.show_hide)
 				this.show_hide = !this.show_hide
 			},
 			hideFixed(){

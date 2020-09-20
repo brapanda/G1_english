@@ -19,10 +19,13 @@
 			<button class="cu-btn round lg bg-white" @click="reselfTest">
 				<text class="cuIcon-refresh"> {{" Retest"}}</text>
 			</button>
+			<!-- #ifdef MP-WEIXIN -->
 			<button class="cu-btn round lg bg-white" @click="share" open-type="share">
 				<text class="cuIcon-share"> {{" Share"}}</text>
 			</button>
+			<!-- #endif -->
 		</view>
+		<view style='height:120upx'></view>
 	</view>
 </template>
 
@@ -73,7 +76,7 @@
 			reselfTest(){
 				var _this = this
 				uni.showModal({
-					title: 'Do you confirm to retest, it will delete all questions and answers?',
+					title: 'Do you confirm to retest, it will delete all answers?',
 					showCancel: true,
 					success(e) {
 						if(e.confirm){
@@ -81,7 +84,7 @@
 							console.log("reset questions",e)
 							_this.$eventHub.$emit('resetAction', {'resetQuestions':true,'currentType':_this.testType})
 							uni.navigateBack({})
-							_this.$eventHub.$off('resetAction');
+							// _this.$eventHub.$off('resetAction');
 						}
 					}
 				})

@@ -7,25 +7,25 @@
       
       <view class="bd" :class="[isCorrectAndSelected(0,info)]" @click="selectedAnswer(0,info)">
         <view class="shopCreditWrap">
-          <image class="shopCreditLv1" :src="'/static/images/a.png'" />
+          <image mode='aspectFill' class="shopCreditLv1" :src="'/static/images/a.png'" />
           <text class="desc" :class="[isOversize(info.options[0].text),whiteText[0]? 'white-text':'']">{{ info.options[0].text }}</text>
         </view>
       </view>
       <view class="bd" :class="[isCorrectAndSelected(1,info)]" @click="selectedAnswer(1,info)">
         <view class="shopCreditWrap">
-          <image class="creditLv1" :src="'/static/images/b.png'" />
+          <image mode='aspectFill' class="shopCreditLv1" :src="'/static/images/b.png'" />
           <text class="desc" :class="[isOversize(info.options[1].text),whiteText[1]? 'white-text':'']">{{ info.options[1].text }}</text>
         </view>
       </view>
       <view class="bd" :class="[isCorrectAndSelected(2,info)]" @click="selectedAnswer(2,info)">
         <view class="shopCreditWrap">
-          <image class="lanzuanLv1" :src="'/static/images/c.png'" />
+          <image mode='aspectFill' class="shopCreditLv1" :src="'/static/images/c.png'" />
           <text class="desc" :class="[isOversize(info.options[2].text),whiteText[2]? 'white-text':'']">{{ info.options[2].text }}</text>
         </view>
       </view>
       <view class="bd" :class="[isCorrectAndSelected(3,info),whiteText[3]? 'white-text':'']" @click="selectedAnswer(3,info)">
         <view class="shopCreditWrap">
-          <image class="huangzuanLv1" :src="'/static/images/d.png'" />
+          <image mode='aspectFill' class="shopCreditLv1" :src="'/static/images/d.png'" />
           <text class="desc" :class="[isOversize(info.options[3].text),whiteText[3]? 'white-text':'']">{{ info.options[3].text }}</text>
         </view>
       </view>
@@ -65,6 +65,8 @@ export default {
 						return 'selected-correct'
 					}
 				}
+			}else{
+				_this.whiteText[e] = false
 			}
 		},
 		
