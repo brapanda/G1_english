@@ -6,7 +6,12 @@
 				:key="index"
 				:class="{'active':true}"
 			>
-				<image :src="'https://youju.nyc3.digitaloceanspaces.com/G1/sign-cn/'+item.question + '.jpg'" mode="aspectFit" lazy-load="true"></image>
+				<!-- #ifdef APP-PLUS || H5-->
+				<image :src="'/static/signs/'+item.question + '.jpg'" mode="aspectFit" lazy-load="true"></image>
+				<!-- #endif -->
+				<!-- #ifdef MP-WEIXIN -->
+				<image :src="'https://image.youju.ca/public/uni-G1/g1en/'+item.question + '.jpg'" mode="aspectFit" lazy-load="true"></image>
+				<!-- #endif -->
 				<view class="sign-text">{{getCorrectAnswer(item)}}</view>
 			</view>
 		</view>

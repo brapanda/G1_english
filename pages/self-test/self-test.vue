@@ -288,9 +288,18 @@ import signQuestion from '@/static/data/question_sign_json.json'
 				this.choice = answer
 			},
 			checkAnswer(){
+				// #ifdef APP-PLUS || H5
 				uni.navigateTo({
 					url:"/pages/self-test/self-test-result?results=" + JSON.stringify(this.subjectList) + "&type=" + this.currentType
 				})
+				// #endif
+				
+				// #ifdef MP-WEIXIN
+				uni.setStorageSync("result-score",this.subjectList)
+				uni.navigateTo({
+					url:"/pages/self-test/self-test-result?results=1" + "&type=" + this.currentType
+				})
+				// #endif
 			},
 			checkCorrect(){
 				var totalCorrect = 0

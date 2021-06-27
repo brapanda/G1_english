@@ -1,5 +1,5 @@
 <template>
-	<view class="m-column" :style="{height: height}">
+	<view class="m-column" :style="{height: height,width:width}">
 		<view class="test-score" v-if="testType != 'selfTest'">
 			<view :style="'color:' + (score>=80?'#00bf8f':'#e3494a')">{{'Score: '+totalScore.correct.toString()+' / ' + totalScore.total.toString()}}</view>
 			<view :style="'font-size:30upx'">{{'Signs: ' + signAnswer.correct.toString() + ' / ' + signAnswer.total.toString()}}</view>
@@ -36,34 +36,44 @@
 		data(){
 			return{
 				height: '0px',
+				width: '100%',
 				score: 0,
 				selfTestAnswer: [],
 				categoryDic:{
-				0: "x",
-				1: "湿垃圾",
-				2: "干垃圾",
-				3: "可回收垃圾",
-				4: "有害垃圾",
-				5: "不属于日常生活垃圾",
-				6: "装修垃圾，请咨询物业",
-				7: "大件垃圾，请咨询物业"
-			},
-			colorDic:{
-				1: "#7e5132",
-				2: "#000000",
-				3: "#2c2884",
-				4: "#ff4765",
-				5: "#2a2a2a",
-				6: "#2a2a2a",
-				7: "#2a2a2a",
-			},
-			choice : ["A","B","C","D"],
-			colors : ["#00bf8f","#e3494a"],
-			testType: '',
-			signAnswer: {},
-			ruleAnswer: {},
-			isPass: false,
-			totalScore: {}
+					0: "x",
+					1: "湿垃圾",
+					2: "干垃圾",
+					3: "可回收垃圾",
+					4: "有害垃圾",
+					5: "不属于日常生活垃圾",
+					6: "装修垃圾，请咨询物业",
+					7: "大件垃圾，请咨询物业"
+				},
+				colorDic:{
+					1: "#7e5132",
+					2: "#000000",
+					3: "#2c2884",
+					4: "#ff4765",
+					5: "#2a2a2a",
+					6: "#2a2a2a",
+					7: "#2a2a2a",
+				},
+				choice : ["A","B","C","D"],
+				colors : ["#00bf8f","#e3494a"],
+				testType: '',
+				signAnswer: {
+					correct:0,
+					total:0
+				},
+				ruleAnswer: {
+					correct:0,
+					total:0
+				},
+				isPass: false,
+				totalScore: {
+					correct: 0,
+					total: 0
+				}
 			}
 		},
 		components:{
@@ -181,7 +191,14 @@
 			});
 			if (options){
 				if(options.results){
+					// #ifdef APP-PLUS || H5
 					this.selfTestAnswer = JSON.parse(options.results)
+					// #endif
+					
+					// #ifdef MP-WEIXIN
+					let resultJson = uni.getStorageSync("result-score")
+					this.selfTestAnswer = resultJson
+					// #endif
 				}
 				if (options.type){
 					this.testType = options.type

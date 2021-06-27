@@ -2,8 +2,13 @@
   <view class="hm-reply-card">
     <view class="box">
 		<text class="question-text" v-if="info.type == 'rule'">{{ info.question }}</text>
-		<image class="sign-image" mode="aspectFit" lazy-load="true" :src="info.showImg?'https://youju.nyc3.digitaloceanspaces.com/G1/sign-en/'+info.question + '.jpg':''" v-else></image>
 		
+		<!-- #ifdef APP-PLUS || H5 -->
+		<image class="sign-image" mode="aspectFit" lazy-load="true" :src="info.showImg ? '/static/signs/'+info.question + '.jpg':''" v-else></image>
+		<!-- #endif -->
+		<!-- #ifdef MP-WEIXIN -->
+		<image class="sign-image" mode="aspectFit" lazy-load="true" :src="info.showImg ? 'https://image.youju.ca/public/uni-G1/g1en/'+info.question + '.jpg':''" v-else></image>
+		<!-- #endif -->
       
       <view class="bd" :class="[isCorrectAndSelected(0,info)]" @click="selectedAnswer(0,info)">
         <view class="shopCreditWrap">

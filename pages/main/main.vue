@@ -1,7 +1,7 @@
 <template>
 	<div style="margin-top: 40rpx;">
 		<div class="hm-downloads-card"  @click="goTo('info')">
-		  <div class="container" style="background-image: url('/static/images/background2.jpg');background-size: 1800upx">
+		  <div class="container card-style-1" style="background-image: url('/static/images/background2.jpg');background-size: 1500upx">
 			<div class="downloadDetail">
 			  <div class="downloadDetail-container">
 				<text class="count">{{ title(0) }}</text>
@@ -13,7 +13,7 @@
 		</div>
 		
 		<div class="hm-downloads-card" @click="goTo('sign-view')">
-		  <div class="container" style="background-image: url('/static/images/background2.jpg');background-size: 1800upx">
+		  <div class="container card-style-2" style="background-image: url('/static/images/background2.jpg');background-size: 1500upx">
 			<div class="downloadDetail">
 			  <div class="downloadDetail-container">
 				<text class="count">{{ title(1) }}</text>
@@ -24,7 +24,7 @@
 		</div>
 		
 		<div class="hm-downloads-card" @click="goTo('test')">
-		  <div class="container" style="background-image: url('/static/images/background2.jpg');background-size: 1800upx">
+		  <div class="container card-style-3" style="background-image: url('/static/images/background2.jpg');background-size: 1500upx">
 			<div class="downloadDetail">
 			  <div class="downloadDetail-container">
 				<text class="count">{{ title(2) }}</text>
@@ -116,7 +116,19 @@ export default {
 	
 	.card-background{
 		background-image: url('/static/images/background.jpg');
-		background-size: 1800upx
+		background-size: 1500upx
+	}
+	
+	.card-style-1{
+		background-color: #49AFCD;
+	}
+	
+	.card-style-2{
+		background-color: #F0AD4E;
+	}
+	
+	.card-style-3{
+		background-color: #56BD92;
 	}
 
 </style> 
